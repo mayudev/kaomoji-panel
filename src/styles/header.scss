@@ -1,0 +1,10 @@
+.Header {
+  width: 100vw;
+  background: var(--background-header);
+  color: white;
+  padding: var(--padding) 12px;
+}
+
+.Header__text {
+  font-weight: 600;
+}

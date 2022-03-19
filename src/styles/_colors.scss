@@ -1,0 +1,15 @@
+:root {
+  // Light theme
+  --background: white;
+  --text-color: black;
+
+  // Theme independent
+  --background-header: #d35f8d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #2e3440;
+    --text-color: #d8dee9;
+  }
+}
