@@ -7,7 +7,7 @@ function Display() {
   }
 
   const display = emotes.map((emoji) => (
-    <Kaomoji onClick={(emote) => copy(emote)} content={emoji} />
+    <Kaomoji key={emoji} onClick={(emote) => copy(emote)} content={emoji} />
   ));
   return <div>{display}</div>;
 }
