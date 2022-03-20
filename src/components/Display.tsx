@@ -1,14 +1,37 @@
+import { CSSTransition } from "react-transition-group";
+import { useEffect, useState } from "react";
 import { group1, group2, group3, group4 } from "../lib/emotes";
 import Group from "./Group";
 import "../styles/display.scss";
 import Information from "./Information";
+import Tooltip from "./Tooltip";
 
 function Display() {
+  /* State */
+  const [message, setMessage] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
+
+  /** Show message */
+  const spawnTooltip = (message: string) => {
+    setMessage(message);
+    setShowMessage(true);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMessage(false);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  });
+
   /**
    * Copy emoji to clipboard
    */
   const copy = (emote: string) => {
     navigator.clipboard.writeText(emote);
+    spawnTooltip("Copied!");
   };
 
   const groups = [group1, group2, group3, group4];
@@ -46,6 +69,14 @@ function Display() {
       <Information />
       <div className="Display">{display}</div>
       <nav className="Navigation">{navigation}</nav>
+      <CSSTransition
+        in={showMessage}
+        timeout={200}
+        unmountOnExit
+        classNames="message"
+      >
+        <Tooltip message={message} />
+      </CSSTransition>
     </>
   );
 }

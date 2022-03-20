@@ -30,3 +30,24 @@
   padding: var(--padding);
   margin: 0;
 }
+
+/**
+ * Transition
+ */
+.message-enter {
+  opacity: 0;
+}
+
+.message-enter-active {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.message-exit {
+  opacity: 1;
+}
+
+.message-exit-active {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
