@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import "../styles/navigation.scss";
 
 type Props = {
@@ -5,10 +6,32 @@ type Props = {
 };
 
 function Navigation(props: Props) {
+  const navigationRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (navigationRef.current !== null) {
+      navigationRef.current.scrollBy({
+        left: -200,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (navigationRef.current !== null) {
+      navigationRef.current.scrollBy({
+        left: 200,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <div className="Navigation__container">
-      <nav className="Navigation">
-        <div className="Navigation__handle Navigation__handle--left">
+      <nav className="Navigation" ref={navigationRef}>
+        <div
+          className="Navigation__handle Navigation__handle--left"
+          onClick={scrollLeft}
+        >
           {/* Material Icons arrow_back_ios_new */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +47,10 @@ function Navigation(props: Props) {
             </g>
           </svg>
         </div>
-        <div className="Navigation__handle Navigation__handle--right">
+        <div
+          className="Navigation__handle Navigation__handle--right"
+          onClick={scrollRight}
+        >
           {/* Material Icons arrow_forward_ios */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
