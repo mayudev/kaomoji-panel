@@ -1,6 +1,7 @@
 import { group1, group2, group3, group4 } from "../lib/emotes";
 import Group from "./Group";
 import "../styles/display.scss";
+import Information from "./Information";
 
 function Display() {
   /**
@@ -42,6 +43,7 @@ function Display() {
 
   return (
     <>
+      <Information />
       <div className="Display">{display}</div>
       <nav className="Navigation">{navigation}</nav>
     </>
