@@ -9,11 +9,24 @@
   font-weight: 600;
   padding: var(--padding);
 
-  color: var(--text-primary);
+  color: var(--text-color);
   text-transform: uppercase;
   text-decoration: none;
 }
 
 .Link--active {
   border-bottom: 1px solid var(--text-selected);
+}
+
+.Navigation {
+  height: 100px;
+  overflow-y: scroll;
+}
+
+.Information {
+}
+
+.Information__content {
+  padding: var(--padding);
+  margin: 0;
 }
