@@ -5,6 +5,7 @@
 
   transition: color 0.2s;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     color: var(--text-elevated);
