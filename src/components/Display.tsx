@@ -25,6 +25,7 @@ function Display() {
   /* State */
   const [message, setMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);
+  const [favorites, setFavorites] = useState<Array<string>>([]);
 
   /** Show message */
   const spawnTooltip = (message: string) => {
@@ -48,6 +49,25 @@ function Display() {
     navigator.clipboard.writeText(emote);
     spawnTooltip("Copied!");
   };
+
+  const toggleFavorite = (emote: string, group: string) => {
+    if (group === "Favorites") {
+      // Remove from favorites
+      setFavorites(favorites.filter((item) => item !== emote));
+    } else {
+      // Check for duplicates
+      const duplicate = favorites.find((kao) => kao === emote);
+      if (duplicate) return;
+
+      // Add to favorites
+      setFavorites((oldFavorites) => [...oldFavorites, emote]);
+    }
+  };
+
+  // Update favorites
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   const groups = [
     std,
@@ -82,6 +102,7 @@ function Display() {
         key={groupName}
         content={group.slice(1)}
         onClick={(kao) => copy(kao)}
+        onRightClick={toggleFavorite}
       />
     );
   });
@@ -97,7 +118,15 @@ function Display() {
   return (
     <>
       <Information />
-      <div className="Display">{display}</div>
+      <div className="Display">
+        <Group
+          name="Favorites"
+          content={favorites}
+          onClick={(kao) => copy(kao)}
+          onRightClick={toggleFavorite}
+        />
+        {display}
+      </div>
       <nav className="Navigation">{navigation}</nav>
       <CSSTransition
         in={showMessage}
