@@ -140,12 +140,14 @@ function Display() {
     <>
       <Information />
       <div className="Display">
-        <Group
-          name="Favorites"
-          content={favorites}
-          onClick={(kao) => copy(kao)}
-          onRightClick={toggleFavorite}
-        />
+        {favorites.length > 0 && (
+          <Group
+            name="Favorites"
+            content={favorites}
+            onClick={(kao) => copy(kao)}
+            onRightClick={toggleFavorite}
+          />
+        )}
         {display}
       </div>
       <nav className="Navigation">{navigation}</nav>
