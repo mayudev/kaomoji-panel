@@ -1,6 +1,7 @@
 .Navigation {
   overflow-y: scroll;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
 
   user-select: none;
 

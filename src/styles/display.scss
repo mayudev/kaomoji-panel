@@ -2,6 +2,9 @@
   overflow: scroll;
   height: auto;
   max-height: 100%;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
 }
 
 .Information {
