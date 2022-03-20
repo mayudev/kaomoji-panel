@@ -12,6 +12,7 @@ function Header() {
         target="_blank"
         rel="noreferrer"
         className="Header__icon"
+        title="Source code"
       >
         <img src={code} alt="Source code" />
       </a>
