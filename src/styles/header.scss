@@ -1,8 +1,14 @@
 .Header {
-  width: 100vw;
   background: var(--background-header);
   color: white;
   padding: var(--padding) 12px;
+
+  display: flex;
+  align-items: center;
+}
+
+.Header__icon {
+  height: 23px;
 }
 
 .Header__text {
