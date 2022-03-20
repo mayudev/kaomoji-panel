@@ -1,6 +1,21 @@
 import { CSSTransition } from "react-transition-group";
 import { useEffect, useState } from "react";
-import { group1, group2, group3, group4 } from "../lib/emotes";
+import {
+  animals,
+  cry,
+  dancing,
+  disapproval,
+  flex,
+  hug,
+  love,
+  nervous,
+  pointing,
+  shrug,
+  smiling,
+  std,
+  surprised,
+  tableflip,
+} from "../lib/emotes";
 import Group from "./Group";
 import "../styles/display.scss";
 import Information from "./Information";
@@ -34,7 +49,22 @@ function Display() {
     spawnTooltip("Copied!");
   };
 
-  const groups = [group1, group2, group3, group4];
+  const groups = [
+    std,
+    smiling,
+    love,
+    hug,
+    flex,
+    animals,
+    surprised,
+    dancing,
+    shrug,
+    tableflip,
+    disapproval,
+    cry,
+    nervous,
+    pointing,
+  ];
 
   const names: string[] = [];
 
