@@ -2,4 +2,4 @@
 
 # kaomoji-panel
 
-A [kaomoji](https://en.wikipedia.org/wiki/Emoticon#Japanese_(kaomoji)) picker browser extension.
+(WIP) A [kaomoji](https://en.wikipedia.org/wiki/Emoticon#Japanese_(kaomoji)) picker browser extension.
