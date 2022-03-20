@@ -20,6 +20,7 @@ import Group from "./Group";
 import "../styles/display.scss";
 import Information from "./Information";
 import Tooltip from "./Tooltip";
+import Navigation from "./Navigation";
 
 function Display() {
   /* State */
@@ -128,14 +129,6 @@ function Display() {
     );
   });
 
-  const navigation = names.map((name) => {
-    return (
-      <a className="Link" key={name} href={"#" + name}>
-        {name}
-      </a>
-    );
-  });
-
   return (
     <>
       <Information />
@@ -150,7 +143,7 @@ function Display() {
         )}
         {display}
       </div>
-      <nav className="Navigation">{navigation}</nav>
+      <Navigation groupNames={names} />
       <CSSTransition
         in={showMessage}
         timeout={200}
