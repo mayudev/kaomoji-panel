@@ -1,0 +1,11 @@
+.Group {
+}
+
+.Group__name {
+  font-size: 14px;
+  margin: 0;
+  padding: var(--padding);
+
+  color: var(--text-primary);
+  text-transform: uppercase;
+}

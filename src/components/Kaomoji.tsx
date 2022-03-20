@@ -1,3 +1,5 @@
+import "../styles/kaomoji.scss";
+
 type Props = {
   content: string;
   onClick: (content: string) => void;

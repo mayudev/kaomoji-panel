@@ -5,11 +5,15 @@
 
   // Theme independent
   --background-header: #d35f8d;
+  --text-elevated: #b48ead;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #2e3440;
+    --background-elevated: #3b4252;
+
     --text-color: #d8dee9;
+    --text-primary: #eceff4;
   }
 }

@@ -1,0 +1,16 @@
+.Kaomoji {
+  padding: 4px var(--padding);
+  line-height: 2;
+  font-weight: 600;
+
+  transition: color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-elevated);
+  }
+
+  &:active {
+    color: var(--background-header);
+  }
+}
