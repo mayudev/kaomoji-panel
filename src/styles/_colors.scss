@@ -21,4 +21,8 @@
     --text-elevated: #b48ead;
     --text-primary: #eceff4;
   }
+
+  .Icon {
+    filter: invert(100%);
+  }
 }

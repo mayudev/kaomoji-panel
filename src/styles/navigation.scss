@@ -10,8 +10,49 @@
   min-height: 40px;
   display: flex;
   align-items: center;
-
   border-top: 1px solid var(--color-border);
+
+  padding: 0 40px;
+}
+
+.Navigation__container {
+  position: relative;
+}
+
+.Navigation__handle {
+  display: flex;
+  align-items: center;
+  position: absolute;
+
+  padding: 0 8px;
+  top: 0;
+  bottom: 0;
+  margin-top: 1px;
+  cursor: pointer;
+
+  background: rgba(236, 239, 244, 0.5);
+
+  svg {
+    transition: fill 0.2s;
+  }
+
+  &:hover svg {
+    fill: var(--color-border);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .Navigation__handle {
+    background: rgba(47, 53, 65, 0.5);
+  }
+}
+
+.Navigation__handle--left {
+  left: 0;
+}
+
+.Navigation__handle--right {
+  right: 0;
 }
 
 .Link {

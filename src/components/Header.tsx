@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../styles/header.scss";
-import code from "../code.svg";
+import code from "../assets/code.svg";
 
 function Header() {
   return (
