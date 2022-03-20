@@ -3,13 +3,27 @@ import Group from "../components/Group";
 
 it("should display group name", () => {
   const groupName = "Group Name";
-  render(<Group name={groupName} content={[]} onClick={function (arg) {}} />);
+  render(
+    <Group
+      name={groupName}
+      content={[]}
+      onClick={function (arg) {}}
+      onRightClick={function (arg) {}}
+    />
+  );
 
   expect(screen.getByText(groupName)).toBeInTheDocument();
 });
 
 it("should display content", () => {
-  render(<Group name="Group" content={["kao"]} onClick={function (arg) {}} />);
+  render(
+    <Group
+      name="Group"
+      content={["kao"]}
+      onClick={function (arg) {}}
+      onRightClick={function (arg) {}}
+    />
+  );
 
   expect(screen.getByText("kao")).toBeInTheDocument();
 });
