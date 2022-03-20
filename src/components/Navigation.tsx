@@ -1,3 +1,5 @@
+import "../styles/navigation.scss";
+
 type Props = {
   groupNames: Array<string>;
 };
