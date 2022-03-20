@@ -34,6 +34,24 @@ function Display() {
   };
 
   useEffect(() => {
+    // Load favorites from localStorage
+    const savedFavs = localStorage.getItem("favorites");
+
+    if (savedFavs === null) return;
+
+    const parsed = JSON.parse(savedFavs);
+
+    // Validate array
+    if (
+      Array.isArray(parsed) &&
+      parsed.every((item) => typeof item === "string")
+    ) {
+      // Load favorites
+      setFavorites(parsed);
+    }
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setShowMessage(false);
     }, 1000);
