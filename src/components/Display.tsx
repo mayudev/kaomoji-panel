@@ -79,6 +79,9 @@ function Display() {
 
       // Add to favorites
       setFavorites((oldFavorites) => [...oldFavorites, emote]);
+
+      // Display message
+      spawnTooltip("Added to favorites!");
     }
   };
 
