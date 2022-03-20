@@ -3,3 +3,17 @@
   height: auto;
   max-height: 100%;
 }
+
+.Link {
+  font-size: 14px;
+  font-weight: 600;
+  padding: var(--padding);
+
+  color: var(--text-primary);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.Link--active {
+  border-bottom: 1px solid var(--text-selected);
+}

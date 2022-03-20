@@ -12,11 +12,15 @@ function Display() {
 
   const groups = [group1, group2, group3, group4];
 
+  const names: string[] = [];
+
   const display = groups.map((group) => {
     if (group.length === 0) return false;
 
     // First element of the array is the group name
     const groupName = group[0];
+
+    names.push(groupName);
 
     return (
       <Group
@@ -28,12 +32,18 @@ function Display() {
     );
   });
 
+  const navigation = names.map((name) => {
+    return (
+      <a className="Link" key={name} href={"#" + name}>
+        {name}
+      </a>
+    );
+  });
+
   return (
     <>
       <div className="Display">{display}</div>
-      <footer>
-        <a href="#Group3">group3</a>
-      </footer>
+      <nav className="Navigation">{navigation}</nav>
     </>
   );
 }
