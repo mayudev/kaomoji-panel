@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "../styles/navigation.scss";
 
 type Props = {
@@ -7,6 +7,8 @@ type Props = {
 
 function Navigation(props: Props) {
   const navigationRef = useRef<HTMLDivElement>(null);
+
+  const [active, setActive] = useState(0);
 
   const scrollLeft = () => {
     if (navigationRef.current !== null) {
@@ -68,8 +70,13 @@ function Navigation(props: Props) {
             </g>
           </svg>
         </div>
-        {props.groupNames.map((group) => (
-          <a href={"#" + group} key={group} className="Link">
+        {props.groupNames.map((group, i) => (
+          <a
+            href={"#" + group}
+            key={group}
+            className={`Link ${active === i ? "Link--active" : ""}`}
+            onClick={() => setActive(i)}
+          >
             {group}
           </a>
         ))}
