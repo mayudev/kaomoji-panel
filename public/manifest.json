@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "kaomoji-panel",
-  "version": "1.0",
-  "description": "A panel with kaomoji, ٩(◕‿◕｡)۶",
+  "version": "1.0.0",
+  "description": "A kaomoji picker, ٩(◕‿◕｡)۶",
   "icons": {
     "48": "icon-48.png"
   },
