@@ -7,7 +7,7 @@
     "48": "icon-48.png"
   },
   "browser_action": {
-    "default_title": "Kaomoji Panel",
+    "default_title": "Kaomoji Picker",
     "default_popup": "index.html"
   }
 }

@@ -5,7 +5,7 @@ import code from "../assets/code.svg";
 function Header() {
   return (
     <div className="Header">
-      <span className="Header__text">Kaomoji Panel</span>
+      <span className="Header__text">Kaomoji Picker</span>
       <span style={{ flex: 1 }}></span>
       <a
         href="https://github.com/mayudev/kaomoji-panel"
