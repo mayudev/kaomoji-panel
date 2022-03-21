@@ -469,6 +469,7 @@ export const pointing = [
 
 export const std = [
   "Standard",
+  "٩(◕‿◕｡)۶",
   "(╯◕_◕)╯",
   "(╯︵╰,)",
   "(╯3╰)",
