@@ -4,7 +4,11 @@
 
 A [kaomoji](https://en.wikipedia.org/wiki/Emoticon#Japanese_(kaomoji)) picker browser extension.
 
-## Instalation
+Kaomoji Picker is a simple extension that allows you to copy and paste kaomoji quickly and use them to make yourself look cuter (✿^‿^)
+
+Emoticons are divided into groups for the ease of use. Supports light and dark theme.
+
+## Installation
 
 WIP
 
