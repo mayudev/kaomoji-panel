@@ -6,7 +6,6 @@
   "icons": {
     "48": "icon-48.png"
   },
-  "permissions": ["activeTab"],
   "browser_action": {
     "default_title": "Kaomoji Panel",
     "default_popup": "index.html"
