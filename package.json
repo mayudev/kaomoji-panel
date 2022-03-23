@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build": "INLINE_RUNTIME_CHUNK=false react-scripts build",
     "build:firefox": "INLINE_RUNTIME_CHUNK=false react-scripts build && web-ext build -s build/ -a package",
     "build:chrome": "INLINE_RUNTIME_CHUNK=false react-scripts build && cp manifest-v3.json build/manifest.json && web-ext build -s build/ -a package-chrome",
     "test": "react-scripts test",
