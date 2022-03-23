@@ -5,6 +5,11 @@
 
 <h1 align="center">Kaomoji Picker</h1>
 
+<p align="center">
+<img src="https://img.shields.io/github/license/mayudev/kaomoji-panel?style=for-the-badge" alt="license" />
+<img src="https://img.shields.io/chrome-web-store/v/daijnhkkklalelhfkhcjbcmhiedfnigk?style=for-the-badge" alt="version for chrome">
+<img src="https://img.shields.io/github/languages/top/mayudev/kaomoji-panel?style=for-the-badge" alt="typescript">
+</p>
 
 <p align="center">
 <a href="https://addons.mozilla.org/en-US/firefox/addon/kaomoji-picker/"><img src="https://user-images.githubusercontent.com/585534/107280546-7b9b2a00-6a26-11eb-8f9f-f95932f4bfec.png" alt="Firefox addon"></a> 
@@ -29,7 +34,6 @@ Install dependencies: `npm install`
 ```
 npm start
 ```
-
 ### Build the package for production
 ```
 npm run build:firefox
