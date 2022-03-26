@@ -16,11 +16,11 @@ import {
   surprised,
   tableflip,
 } from "../lib/emotes";
-import Group from "./Group";
+import Group from "../components/Group";
 import "../styles/display.scss";
-import Information from "./Information";
-import Tooltip from "./Tooltip";
-import Navigation from "./Navigation";
+import Information from "../components/Information";
+import Tooltip from "../components/Tooltip";
+import Navigation from "../components/Navigation";
 
 function Display() {
   /* State */
