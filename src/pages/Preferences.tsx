@@ -8,7 +8,7 @@ type Props = {
 function Preferences(props: Props) {
   return (
     <>
-      <BackButton />
+      <BackButton onClick={props.onReturn} />
     </>
   );
 }
