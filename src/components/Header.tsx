@@ -1,21 +1,23 @@
 import * as React from "react";
 import "../styles/header.scss";
-import code from "../assets/code.svg";
+import settings from "../assets/settings.svg";
 
-function Header() {
+type Props = {
+  onClick: () => void;
+};
+
+function Header(props: Props) {
   return (
     <div className="Header">
       <span className="Header__text">Kaomoji Picker</span>
       <span style={{ flex: 1 }}></span>
-      <a
-        href="https://github.com/mayudev/kaomoji-panel"
-        target="_blank"
-        rel="noreferrer"
+      <button
         className="Header__icon"
-        title="Source code"
+        title="Preferences"
+        onClick={props.onClick}
       >
-        <img src={code} alt="Source code" />
-      </a>
+        <img src={settings} alt="Preferences" />
+      </button>
     </div>
   );
 }
