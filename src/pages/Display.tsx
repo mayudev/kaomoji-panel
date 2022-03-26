@@ -21,12 +21,15 @@ import "../styles/display.scss";
 import Information from "../components/Information";
 import Tooltip from "../components/Tooltip";
 import Navigation from "../components/Navigation";
+import { usePreferences } from "../lib/preferences";
 
 function Display() {
   /* State */
   const [message, setMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [favorites, setFavorites] = useState<Array<string>>([]);
+
+  const preferences = usePreferences();
 
   /** Show message */
   const spawnTooltip = (message: string) => {
@@ -65,6 +68,11 @@ function Display() {
    * Copy emoji to clipboard
    */
   const copy = (emote: string) => {
+    const replaceSlashes = preferences.get("slashes");
+    if (replaceSlashes != null && JSON.parse(replaceSlashes)) {
+      emote = emote.replace("/", "／").replace("\\", "＼");
+    }
+
     navigator.clipboard.writeText(emote);
     spawnTooltip("Copied!");
   };

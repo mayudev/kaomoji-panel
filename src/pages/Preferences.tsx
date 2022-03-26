@@ -8,6 +8,8 @@ type Props = {
   onReturn: () => void;
 };
 
+// This is awful but I'm too lazy to fix it (sucks to be you, me who comes here later to add another setting)
+
 function Preferences(props: Props) {
   const preferences = usePreferences();
   const [slashes, setSlashes] = useState(false);
