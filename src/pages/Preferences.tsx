@@ -13,7 +13,7 @@ function Preferences(props: Props) {
       <Preference
         property="slashes"
         name="Replace slashes with fullwidth slashes"
-        description="s"
+        description="In some cases, regular backslashes (\) might disappear when pasting. This replaces them with fullwidth slashes (／ and ＼)"
       />
     </>
   );
