@@ -1,6 +1,8 @@
 export function usePreferences() {
-  function get(item: string) {
-    return localStorage.getItem(item);
+  function get<T>(item: string, fallbackValue: T): T {
+    const value = localStorage.getItem(item);
+    if (value === null) return fallbackValue;
+    else return JSON.parse(value);
   }
 
   function set<T>(item: string, value: T) {

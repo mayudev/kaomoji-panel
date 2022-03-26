@@ -68,8 +68,8 @@ function Display() {
    * Copy emoji to clipboard
    */
   const copy = (emote: string) => {
-    const replaceSlashes = preferences.get("slashes");
-    if (replaceSlashes != null && JSON.parse(replaceSlashes)) {
+    const replaceSlashes = preferences.get<boolean>("slashes", false);
+    if (replaceSlashes) {
       emote = emote.replace("/", "／").replace("\\", "＼");
     }
 

@@ -1,17 +1,32 @@
+import { useEffect, useState } from "react";
+import { usePreferences } from "../../lib/preferences";
+
 type Props<T> = {
+  property: string;
   name: string;
   description?: string;
-  value: T;
-  onChange: (newValue: T) => void;
 };
 
 function Preference(props: Props<boolean>) {
+  const preferences = usePreferences();
+  const [value, setValue] = useState(false);
+
+  useEffect(() => {
+    const currentValue = preferences.get<boolean>(props.property, false);
+    setValue(currentValue);
+  }, []);
+
+  function updateValue(newValue: boolean) {
+    setValue(newValue);
+    preferences.set(props.property, newValue);
+  }
+
   const formControl = () => {
     return (
       <input
         type="checkbox"
-        onChange={(e) => props.onChange(e.target.checked)}
-        checked={props.value}
+        onChange={(e) => updateValue(e.target.checked)}
+        checked={value}
       />
     );
   };
