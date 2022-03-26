@@ -76,3 +76,19 @@
 .Checkbox--checked {
   background: var(--color-border);
 }
+
+.Preferences__link {
+  display: inline-block;
+  padding: 12px 0 8px 12px;
+
+  color: var(--text-elevated);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--background-header);
+  }
+}

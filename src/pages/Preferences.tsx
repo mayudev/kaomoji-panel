@@ -15,6 +15,16 @@ function Preferences(props: Props) {
         name="Replace slashes with fullwidth slashes"
         description="In some cases, regular backslashes (\) might disappear when pasting. This replaces them with fullwidth slashes (／ and ＼)"
       />
+      <footer className="Preferences__footer">
+        <a
+          className="Preferences__link"
+          href="https://github.com/mayudev/kaomoji-panel"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Extension source code
+        </a>
+      </footer>
     </>
   );
 }
