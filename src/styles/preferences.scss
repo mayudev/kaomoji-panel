@@ -1,0 +1,22 @@
+.BackButton {
+  all: unset;
+
+  color: var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--background-header);
+  }
+}
+
+.BackButton__content {
+  margin: 0;
+  padding: 12px;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}

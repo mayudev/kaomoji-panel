@@ -8,7 +8,15 @@
 }
 
 .Header__icon {
+  all: unset;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
   height: 23px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .Header__text {
