@@ -10,10 +10,12 @@ type Props<T> = {
 function Preference(props: Props<boolean>) {
   const preferences = usePreferences();
   const [value, setValue] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const currentValue = preferences.get<boolean>(props.property, false);
     setValue(currentValue);
+    setLoaded(true);
   }, []);
 
   function updateValue(newValue: boolean) {
@@ -53,7 +55,7 @@ function Preference(props: Props<boolean>) {
         {props.description && (
           <p className="Preference__description">{props.description}</p>
         )}
-        {formControl()}
+        {loaded ? formControl() : <div style={{ width: "64px" }}></div>}
       </div>
     </label>
   );
