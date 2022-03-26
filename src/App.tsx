@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <Header onClick={switchPage} />
-      {page === "display" ? <Display /> : <Preferences />}
+      {page === "display" ? <Display /> : <Preferences onReturn={switchPage} />}
     </div>
   );
 }
