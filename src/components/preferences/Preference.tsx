@@ -55,7 +55,11 @@ function Preference(props: Props<boolean>) {
         {props.description && (
           <p className="Preference__description">{props.description}</p>
         )}
-        {loaded ? formControl() : <div style={{ width: "64px" }}></div>}
+        {loaded ? (
+          formControl()
+        ) : (
+          <div className="Preference__checkbox" style={{ width: "64px" }}></div>
+        )}
       </div>
     </label>
   );
