@@ -23,6 +23,7 @@
 
 .Preference {
   display: grid;
+  grid-template-columns: 1fr;
 }
 
 .Preference__name {
