@@ -217,6 +217,7 @@ export const animals = [
   "-ᄒᴥᄒ-",
   "/╲/\\╭(•‿•)╮/\\╱\\",
   "Ƹ̵̡Ӝ̵̨̄Ʒ",
+  "ᓚᘏᗢ",
 ];
 
 export const surprised = [
