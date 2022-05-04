@@ -76,7 +76,7 @@ function Preference(props: Props) {
     return (
       <div className="Preference__input">
         <input
-          className="input__element"
+          className="Input__element"
           type="text"
           onChange={(e) => updateValue(e.target.value)}
           value={value as string}
