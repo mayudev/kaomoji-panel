@@ -9,5 +9,9 @@ export function usePreferences() {
     return localStorage.setItem(item, JSON.stringify(value));
   }
 
-  return { get, set };
+  function remove(item: string) {
+    return localStorage.removeItem(item);
+  }
+
+  return { get, set, remove };
 }

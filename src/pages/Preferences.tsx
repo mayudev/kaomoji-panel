@@ -7,6 +7,13 @@ type Props = {
 };
 
 function Preferences(props: Props) {
+  const updateFont = (font: string | boolean) => {
+    if (typeof font === "boolean") return;
+
+    if (font.length === 0) document.body.style.fontFamily = "";
+    else document.body.style.fontFamily = font + ",sans-serif";
+  };
+
   return (
     <>
       <BackButton onClick={props.onReturn} />
@@ -14,6 +21,14 @@ function Preferences(props: Props) {
         property="slashes"
         name="Replace slashes with fullwidth slashes"
         description="In some cases, regular backslashes (\) might disappear when pasting. This replaces them with fullwidth slashes (／ and ＼)"
+        type="checkbox"
+      />
+      <Preference
+        property="font"
+        name="Display font"
+        description="Change font used by this extension"
+        type="input"
+        onUpdate={(font) => updateFont(font)}
       />
       <footer className="Preferences__footer">
         <a

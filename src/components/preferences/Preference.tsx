@@ -1,36 +1,60 @@
 import { useEffect, useState } from "react";
 import { usePreferences } from "../../lib/preferences";
 
+type PrefType = "checkbox" | "input";
+
 type Props = {
   property: string;
   name: string;
   description?: string;
+  type: PrefType;
+  onUpdate?(newValue: boolean | string): void;
 };
 
 function Preference(props: Props) {
   const preferences = usePreferences();
-  const [value, setValue] = useState(false);
+
+  const [value, setValue] = useState(props.type === "checkbox" ? false : "");
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const currentValue = preferences.get<boolean>(props.property, false);
+    let currentValue;
+    if (props.type === "checkbox") {
+      // For checkbox
+      currentValue = preferences.get<boolean>(props.property, false);
+    } else {
+      // For input
+      currentValue = preferences.get<string>(props.property, "");
+    }
+
     setValue(currentValue);
     setLoaded(true);
   }, []);
 
-  function updateValue(newValue: boolean) {
+  function updateValue(newValue: boolean | string) {
+    // Update value locally
     setValue(newValue);
-    preferences.set(props.property, newValue);
+
+    // Delete the entry if it's empty
+    if (typeof newValue === "string" && newValue.length === 0) {
+      preferences.remove(props.property);
+    } else {
+      // Update in localStorage
+      preferences.set(props.property, newValue);
+    }
+
+    // Call external handler
+    if (props.onUpdate) props.onUpdate(newValue);
   }
 
-  const formControl = () => {
+  const checkboxControl = () => {
     return (
       <div className="Preference__checkbox">
         <input
           className="Checkbox__element"
           type="checkbox"
           onChange={(e) => updateValue(e.target.checked)}
-          checked={value}
+          checked={value as boolean}
         />
         <svg
           className={`Checkbox ${value ? "Checkbox--checked" : ""}`}
@@ -48,6 +72,19 @@ function Preference(props: Props) {
     );
   };
 
+  const inputControl = () => {
+    return (
+      <div className="Preference__input">
+        <input
+          className="input__element"
+          type="text"
+          onChange={(e) => updateValue(e.target.value)}
+          value={value as string}
+        />
+      </div>
+    );
+  };
+
   return (
     <label>
       <div className="Preference">
@@ -56,7 +93,11 @@ function Preference(props: Props) {
           <p className="Preference__description">{props.description}</p>
         )}
         {loaded ? (
-          formControl()
+          props.type === "checkbox" ? (
+            checkboxControl()
+          ) : (
+            inputControl()
+          )
         ) : (
           <div className="Preference__checkbox" style={{ width: "64px" }}></div>
         )}

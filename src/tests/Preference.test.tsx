@@ -12,7 +12,12 @@ describe("Preference", () => {
     const name = "Name";
     const description = "Descriptiopn";
     render(
-      <Preference property="whatever" name={name} description={description} />
+      <Preference
+        type="checkbox"
+        property="whatever"
+        name={name}
+        description={description}
+      />
     );
 
     expect(screen.getByText(name)).toBeInTheDocument();
