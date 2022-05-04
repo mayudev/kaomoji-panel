@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { usePreferences } from "../../lib/preferences";
 
-type Props<T> = {
+type Props = {
   property: string;
   name: string;
   description?: string;
 };
 
-function Preference(props: Props<boolean>) {
+function Preference(props: Props) {
   const preferences = usePreferences();
   const [value, setValue] = useState(false);
   const [loaded, setLoaded] = useState(false);
