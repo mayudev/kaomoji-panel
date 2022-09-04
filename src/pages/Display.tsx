@@ -120,24 +120,31 @@ function Display() {
 
   const names: string[] = [];
 
-  const display = groups.map((group) => {
-    if (group.length === 0) return false;
+  const order: number[] = [];
+  const display = groups
+    .sort((a, b) => {
+      if (order.indexOf(a.id) > order.indexOf(b.id)) return -1;
+      else if (order.indexOf(b.id) > order.indexOf(a.id)) return 1;
+      else return 0;
+    })
+    .map((group) => {
+      if (group.contents.length === 0) return false;
 
-    // First element of the array is the group name
-    const groupName = group[0];
+      // First element of the array is the group name
+      const groupName = group.title;
 
-    names.push(groupName);
+      names.push(group.title);
 
-    return (
-      <Group
-        name={groupName}
-        key={groupName}
-        content={group.slice(1)}
-        onClick={(kao) => copy(kao)}
-        onRightClick={toggleFavorite}
-      />
-    );
-  });
+      return (
+        <Group
+          name={groupName}
+          key={groupName}
+          content={group.contents}
+          onClick={(kao) => copy(kao)}
+          onRightClick={toggleFavorite}
+        />
+      );
+    });
 
   return (
     <>
