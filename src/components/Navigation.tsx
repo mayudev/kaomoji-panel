@@ -1,8 +1,13 @@
 import { useRef, useState } from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { EmojiGroup } from "../lib/emotes";
 import "../styles/navigation.scss";
+import NavigationCard from "./NavigationCard";
 
 type Props = {
-  groupNames: Array<string>;
+  groups: Array<EmojiGroup>;
+  moveItem: (source: number, target: number) => void;
 };
 
 function Navigation(props: Props) {
@@ -70,16 +75,18 @@ function Navigation(props: Props) {
             </g>
           </svg>
         </div>
-        {props.groupNames.map((group, i) => (
-          <a
-            href={"#" + group}
-            key={group}
-            className={`Link ${active === i ? "Link--active" : ""}`}
-            onClick={() => setActive(i)}
-          >
-            {group}
-          </a>
-        ))}
+        <DndProvider backend={HTML5Backend}>
+          {props.groups.map((group, i) => (
+            <NavigationCard
+              group={group.title}
+              id={group.id}
+              key={i}
+              active={active === i}
+              moveItem={props.moveItem}
+              onClick={() => setActive(i)}
+            />
+          ))}
+        </DndProvider>
       </nav>
     </div>
   );
