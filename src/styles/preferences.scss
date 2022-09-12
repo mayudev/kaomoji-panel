@@ -75,6 +75,24 @@
   justify-content: center;
 }
 
+.Preference__button {
+  all: unset;
+
+  transition: 0.2s;
+  cursor: pointer;
+
+  padding: 12px 0 8px 12px;
+
+  color: var(--text-elevated);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+
+  &:hover {
+    color: var(--background-header);
+  }
+}
+
 .Checkbox__element {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);

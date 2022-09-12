@@ -14,6 +14,10 @@ function Preferences(props: Props) {
     else document.body.style.fontFamily = font + ",sans-serif";
   };
 
+  const resetOrder = () => {
+    localStorage.removeItem("order");
+  };
+
   return (
     <>
       <BackButton onClick={props.onReturn} />
@@ -30,6 +34,9 @@ function Preferences(props: Props) {
         type="input"
         onUpdate={(font) => updateFont(font)}
       />
+      <button className="Preference__button" onClick={resetOrder}>
+        Reset tab order settings
+      </button>
       <footer className="Preferences__footer">
         <a
           className="Preferences__link"

@@ -55,6 +55,18 @@ function Display() {
       // Load favorites
       setFavorites(parsed);
     }
+
+    // Load tab order from localStorage
+    const savedOrder = localStorage.getItem("order");
+    if (savedOrder === null) return;
+
+    const parsedOrder = JSON.parse(savedOrder);
+    if (
+      Array.isArray(parsedOrder) &&
+      parsedOrder.every((item) => typeof item === "number")
+    ) {
+      setOrder(parsedOrder);
+    }
   }, []);
 
   useEffect(() => {
@@ -138,6 +150,11 @@ function Display() {
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
+
+  // Update order
+  useEffect(() => {
+    localStorage.setItem("order", JSON.stringify(order));
+  }, [order]);
 
   const groups = [
     std,
