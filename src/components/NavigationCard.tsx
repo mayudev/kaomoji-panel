@@ -1,5 +1,6 @@
 import { useDrag, useDrop } from "react-dnd";
 import type { Identifier } from "dnd-core";
+import { useState } from "react";
 
 type Props = {
   group: string;
@@ -24,7 +25,6 @@ function NavigationCard({ group, active, id, onClick, moveItem }: Props) {
       handlerId: monitor.getHandlerId(),
     }),
     drop(item, monitor) {
-      console.log(id);
       const dropId = id;
       const dragId = item.id;
 
@@ -45,14 +45,16 @@ function NavigationCard({ group, active, id, onClick, moveItem }: Props) {
   });
 
   return (
-    <a
-      ref={(node) => drag(drop(node))}
-      href={"#" + group}
-      className={`Link ${active ? "Link--active" : ""}`}
-      onClick={onClick}
-    >
-      {group}
-    </a>
+    <>
+      <a
+        ref={(node) => drag(drop(node))}
+        href={"#" + group}
+        className={`Link ${active ? "Link--active" : ""}`}
+        onClick={onClick}
+      >
+        {group}
+      </a>
+    </>
   );
 }
 

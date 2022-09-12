@@ -80,7 +80,7 @@ function Navigation(props: Props) {
             <NavigationCard
               group={group.title}
               id={group.id}
-              key={i}
+              key={group.id}
               active={active === i}
               moveItem={props.moveItem}
               onClick={() => setActive(i)}

@@ -29,6 +29,7 @@ function Display() {
   const [message, setMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [favorites, setFavorites] = useState<Array<string>>([]);
+  const [order, setOrder] = useState<Array<number>>([]);
 
   const preferences = usePreferences();
 
@@ -95,6 +96,44 @@ function Display() {
     }
   };
 
+  const moveItem = (source: number, target: number) => {
+    setOrder((order) => {
+      const tempOrder = Array.from(order).reverse();
+
+      const targetIndex = tempOrder.indexOf(target);
+      const sourceIndex = tempOrder.indexOf(source);
+
+      if (sourceIndex > -1 && targetIndex > -1) {
+        tempOrder[targetIndex] = source;
+        tempOrder.splice(sourceIndex, 1);
+        tempOrder.splice(targetIndex + 1, 0, target);
+      } else if (targetIndex > -1) {
+        tempOrder.splice(targetIndex, 0, source);
+      } else if (sourceIndex > -1) {
+        tempOrder.splice(sourceIndex, 1);
+        if (target !== source + 1) {
+          for (let i = 0; i < target; i++) {
+            if (i !== source && tempOrder.indexOf(i) === -1) {
+              tempOrder.push(i);
+            }
+          }
+          tempOrder.push(source, target);
+        }
+      } else {
+        const min = Math.min(source, target);
+        for (let i = 0; i < min; i++) {
+          if (tempOrder.indexOf(i) === -1) {
+            tempOrder.push(i);
+          }
+        }
+        tempOrder.push(source, target);
+      }
+
+      tempOrder.reverse();
+      return tempOrder;
+    });
+  };
+
   // Update favorites
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -118,33 +157,11 @@ function Display() {
     pointing,
   ];
 
-  const names: string[] = [];
-
-  const order: number[] = [];
-  const display = groups
-    .sort((a, b) => {
-      if (order.indexOf(a.id) > order.indexOf(b.id)) return -1;
-      else if (order.indexOf(b.id) > order.indexOf(a.id)) return 1;
-      else return 0;
-    })
-    .map((group) => {
-      if (group.contents.length === 0) return false;
-
-      // First element of the array is the group name
-      const groupName = group.title;
-
-      names.push(group.title);
-
-      return (
-        <Group
-          name={groupName}
-          key={groupName}
-          content={group.contents}
-          onClick={(kao) => copy(kao)}
-          onRightClick={toggleFavorite}
-        />
-      );
-    });
+  const sortedGroups = groups.sort((a, b) => {
+    if (order.indexOf(a.id) > order.indexOf(b.id)) return -1;
+    else if (order.indexOf(b.id) > order.indexOf(a.id)) return 1;
+    else return 0;
+  });
 
   return (
     <>
@@ -158,9 +175,20 @@ function Display() {
             onRightClick={toggleFavorite}
           />
         )}
-        {display}
+        {sortedGroups.map((group, i) => (
+          <Group
+            name={group.title}
+            key={i}
+            content={group.contents}
+            onClick={(kao) => copy(kao)}
+            onRightClick={toggleFavorite}
+          ></Group>
+        ))}
       </div>
-      <Navigation groupNames={names} />
+      <Navigation
+        groups={sortedGroups}
+        moveItem={(source, target) => moveItem(source, target)}
+      />
       <CSSTransition
         in={showMessage}
         timeout={200}
